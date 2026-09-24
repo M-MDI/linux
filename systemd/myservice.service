@@ -1,0 +1,16 @@
+[Unit]
+Description=Monitor Root Disk Usage Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/monitor_disk.sh
+# Restart automatically whenever the process stops, whether cleanly or crashed
+Restart=always
+RestartSec=5
+# Write output to the journal, viewable with journalctl
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
